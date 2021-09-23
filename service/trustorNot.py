@@ -1,56 +1,55 @@
+def hands_table_clear(player_hands_table_say):
+    player_hands_table_say[1].clear()
+    player_hands_table_say[2].clear()
 
-def do_you_trust(player_choice_cards, player):  
+
+def do_you_trust(player_hands_table_say, player):  
     while True:
         choice = input("Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards: ")
         if choice == "Yes":
-            if sorted(player_choice_cards[1]) == sorted(player_choice_cards[2]):
-                player_choice_cards[1].clear()
-                player_choice_cards[2].clear()
+            if sorted(player_hands_table_say[1]) == sorted(player_hands_table_say[2]):
+                hands_table_clear(player_hands_table_say)
                 break
 
             else:
-                if len(player_choice_cards[0]) > player + 1:
-                    player_choice_cards[0][player].extend(player_choice_cards[1])
-                    player_choice_cards[1].clear()
-                    player_choice_cards[2].clear()
+                if len(player_hands_table_say[0]) > player + 1:
+                    player_hands_table_say[0][player].extend(player_hands_table_say[1])
+                    hands_table_clear(player_hands_table_say)
                     break
 
-                elif len(player_choice_cards[0]) == player + 1:
-                    player_choice_cards[0][0].extend(player_choice_cards[1])
-                    player_choice_cards[1].clear()
-                    player_choice_cards[2].clear()
+                elif len(player_hands_table_say[0]) == player + 1:
+                    player_hands_table_say[0][0].extend(player_hands_table_say[1])
+                    hands_table_clear(player_hands_table_say)
                     break
 
 
         elif choice == "No":
-            if sorted(player_choice_cards[1]) == sorted(player_choice_cards[2]):
+            if sorted(player_hands_table_say[1]) == sorted(player_hands_table_say[2]):
 
-                if len(player_choice_cards[0]) > player + 1:
-                    player_choice_cards[0][player+1].extend(player_choice_cards[1])
-                    player_choice_cards[1].clear()
-                    player_choice_cards[2].clear()
+                if len(player_hands_table_say[0]) > player + 1:
+                    player_hands_table_say[0][player+1].extend(player_hands_table_say[1])
+                    hands_table_clear(player_hands_table_say)
                     break
 
-                elif len(player_choice_cards[0]) == player + 1:
-                    player_choice_cards[0][0].extend(player_choice_cards[1])
-                    player_choice_cards[1].clear()
-                    player_choice_cards[2].clear()
+                elif len(player_hands_table_say[0]) == player + 1:
+                    player_hands_table_say[0][0].extend(player_hands_table_say[1])
+                    hands_table_clear(player_hands_table_say)
                     break
 
             else:
-                player_choice_cards[0][player].extend(player_choice_cards[1])
-                player_choice_cards[1].clear()
-                player_choice_cards[2].clear()
+                player_hands_table_say[0][player].extend(player_hands_table_say[1])
+                hands_table_clear(player_hands_table_say)
                 break
             
         elif choice == "Add":
-            player_choice_cards[2].clear()
-            return player_choice_cards
+            player_hands_table_say[2].clear()
+            return player_hands_table_say
 
 
         else:
             print("Please write right answer, Yes,  No, or add")
             continue
     
-    return player_choice_cards
+        
+        return player_hands_table_say
 

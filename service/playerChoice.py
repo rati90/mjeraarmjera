@@ -24,17 +24,27 @@ def player_say(player_input, deck):
 
 
 
-
-def player_choice_cards(player_hands, table, player, deck):
+def player_choice_cards(player_hands, table, player, deck):        
     while True:
-        print(f"player N {player + 1} this are your cards {player_hands[player]}")
-        player_input = input(f"Player N {player + 1} please choose how many cards to select: ")
+        print(f"player this are your cards {player_hands[player]}")
+
+        player_input = input(f"Player please choose how many cards to select: ")
         if player_input.isnumeric():
-            if int(player_input) > 0 and int(player_input) < 5:
-                break
-            else:
-                print("print write number between 1-4")
+            if len(player_hands[player]) > 4 and int(player_input) > 4:
+                print("print write number up to 4")
                 continue
+
+            elif len(player_hands[player]) < 4 and int(player_input) > len(player_hands[player]):
+                print(f"print write number up to {len(player_hands[player])} ")
+                continue
+            
+            elif int(player_input) == 0:
+                print("Please choice the possitive number")
+                continue
+            
+            else:
+                break
+        
         else:
             print("print only numbers")
             continue
@@ -58,7 +68,7 @@ def player_choice_cards(player_hands, table, player, deck):
     player_outloud = player_say(player_input, deck)
     
     
-    return player_hands, table, player_outloud 
+    return player_hands, table, player_outloud
 
 
 
