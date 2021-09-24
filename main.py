@@ -1,5 +1,5 @@
 from service.shuffle import shuffle_cards
-from service.playerNumbersChoice import player_numbers
+from service.playerNumbersChoice import player_numbers, player_names
 from service.playerChoice import player_choice_cards
 from service.trustorNot import do_you_trust
 from service.playerHandCheck import check_end, check_hand_zero
@@ -17,16 +17,17 @@ table = []
 def main():
     shuffle_cards(deck)
     player_cards_and_numbers = player_numbers(deck)
-    
+    player_names(player_cards_and_numbers)
+    print(f" Gamers have this cards: {player_cards_and_numbers[0]}")
+
     while True:
         try:
             for player in range(player_cards_and_numbers[1]):
-                
                 player_hands_table_say = player_choice_cards(player_cards_and_numbers[0], table, player, deck)
                 do_you_trust(player_hands_table_say, player)
                 
                 check_hand_zero(player_hands_table_say)
-                print(f"Game Monitor {player_hands_table_say}")
+                print(f"Game Monitor end {player_hands_table_say}")
         except IndexError:
             if check_end(player_hands_table_say) == None:
                 print(f"Game is Over!")

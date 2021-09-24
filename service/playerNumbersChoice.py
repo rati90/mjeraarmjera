@@ -8,15 +8,30 @@ def player_numbers(deck: List):
     player_hands = []
     while True:   
         players = input("Choose Number Of Players(choice 2 to 8): ")
-        if int(players) > 1 or int(players) < 9:
-            break
+        if players.isnumeric():
+            if int(players) > 1 and int(players) < 9:
+                break
+            else:
+                print("Please enter correct numbers\n")
+                continue
         else:
-            print("Please enter correct numbers")
+            print("Please enter only numbers\n")
             continue
-
     splited = np.array_split(deck, int(players))
 
     for array in splited:
         player_hands.append(list(array))
     
     return player_hands, len(player_hands)
+
+
+
+
+def player_names(player_cards_and_numbers):
+    position = 1
+    for names in player_cards_and_numbers[0]:
+        names.insert(0, f"Player N {position}")
+        position += 1
+        
+    return player_cards_and_numbers
+
