@@ -34,7 +34,7 @@ def player_choice_cards(player_hands, table, player, deck):
                 print("print write number up to 4 \n")
                 continue
 
-            elif len(player_hands[player]) < 5 and int(player_input) > len(player_hands[player] - 1):
+            elif len(player_hands[player]) < 5 and int(player_input) > len(player_hands[player]) - 1:
                 print(f"print write number up to {len(player_hands[player])} \n")
                 continue
             

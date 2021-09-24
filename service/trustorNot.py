@@ -7,7 +7,7 @@ def hands_table_clear(player_hands_table_say):
 
 def do_you_trust(player_hands_table_say, player):  
     while True:
-        choice = input(f"Pkayer N {player + 1}Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards: ")
+        choice = input( f"Player N {player + 2} Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards:")
         if choice == "Yes":
             if sorted(player_hands_table_say[1]) == sorted(player_hands_table_say[2]):
                 hands_table_clear(player_hands_table_say)
