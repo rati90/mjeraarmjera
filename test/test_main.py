@@ -1,6 +1,5 @@
 from service.shuffle import shuffle_cards
 
-
 deck = [ 
         '2s', '3s', '4s', '5s', '6s', '7s', '8s', '9s', '10s', 'js', 'qs', 'ks', 'as',
         '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', 'jh', 'qh', 'kh', 'ah',
@@ -9,7 +8,8 @@ deck = [
         ]
 
 
-def test_shuffle_cards(deck):
+
+def test_shuffle_cards():
     cards = shuffle_cards(deck)
-    assert len(shuffle_cards) == 52
+    assert len(cards) == 52
 
