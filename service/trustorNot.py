@@ -2,10 +2,12 @@ def hands_table_clear(player_hands_table_say):
     player_hands_table_say[1].clear()
     player_hands_table_say[2].clear()
 
+    return player_hands_table_say
+
 
 def do_you_trust(player_hands_table_say, player):  
     while True:
-        choice = input("Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards: ")
+        choice = input(f"Pkayer N {player + 1}Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards: ")
         if choice == "Yes":
             if sorted(player_hands_table_say[1]) == sorted(player_hands_table_say[2]):
                 hands_table_clear(player_hands_table_say)
@@ -13,7 +15,7 @@ def do_you_trust(player_hands_table_say, player):
 
             else:
                 if len(player_hands_table_say[0]) > player + 1:
-                    player_hands_table_say[0][player].extend(player_hands_table_say[1])
+                    player_hands_table_say[0][player + 1].extend(player_hands_table_say[1])
                     hands_table_clear(player_hands_table_say)
                     break
 
@@ -47,9 +49,9 @@ def do_you_trust(player_hands_table_say, player):
 
 
         else:
-            print("Please write right answer, Yes,  No, or add")
+            print("Please write right answer, Yes,  No, or add\n")
             continue
     
-        
+        print("I was here 2")
         return player_hands_table_say
 
