@@ -19,7 +19,7 @@ def main():
     player_cards_and_numbers = player_numbers(deck)
     player_names(player_cards_and_numbers)
     print(f" Gamers have this cards: {player_cards_and_numbers[0]} \n")
-
+    
     while True:
         try:
             for player in range(player_cards_and_numbers[1]):

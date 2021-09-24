@@ -1,8 +1,13 @@
 from random import shuffle
-from typing import List
 
 
-def shuffle_cards(deck: List):
+
+def shuffle_cards(deck: list):
+    """
+    Shuffles the cards
+    :param deck is the list of cards
+    :return list of cards
+    """
     shuffle(deck)
     return deck 
 

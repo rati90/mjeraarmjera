@@ -1,10 +1,11 @@
-   
-from typing import List
 import numpy as np
 
-
-def player_numbers(deck: List):
-    #Cards are distributes to as many people as you enter, but only for 2 or 4 people
+def player_numbers(deck: list):
+    """
+    Here can chose the player numbers and the function distributes cards in list
+    :param deck gets list
+    :return tuple (list of list: distributed cards to the players, and players quantity)
+    """
     player_hands = []
     while True:   
         players = input("Choose Number Of Players(choice 2 to 8): ")
@@ -27,7 +28,13 @@ def player_numbers(deck: List):
 
 
 
-def player_names(player_cards_and_numbers):
+def player_names(player_cards_and_numbers: tuple):
+    """
+    names the players
+    :param player_cards_and_numbers gets tuple
+
+    :return tuple, added 0 position player names
+    """
     position = 1
     for names in player_cards_and_numbers[0]:
         names.insert(0, f"Player N {position}")
