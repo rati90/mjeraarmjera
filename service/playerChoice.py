@@ -27,6 +27,38 @@ def player_say(player_input:str, deck:list):
     return player_say
 
 
+
+def player_choice_outloud(player_input: str, player_in: list, table: list, deck: list):
+    """
+    Give a current player to choice the cards to say outloud for other players
+    :player_input number of cards player want to put
+    :player_in current players cards
+    :table cards on table
+    :deck all cards
+
+    :return cards player chosed to say outloud
+    """  
+    count = 0
+    while int(player_input) > count:
+        print(player_in[1:])
+        player_choice = input("Please choose the card:\n")
+        
+        if player_choice in player_in:
+            table.append(player_choice)
+            player_in.remove(player_choice)
+            count += 1
+            continue
+        else:
+            print("Please choice the cards you have\n")
+            continue
+        
+    player_outloud = player_say(player_input, deck)
+
+    return player_outloud
+
+
+
+
 def player_choice_cards(player_hands: list, table: list, player: int, deck: list): 
     """
     Shows the player the cards. Gets how many cards wants to put and which one.
@@ -65,21 +97,8 @@ def player_choice_cards(player_hands: list, table: list, player: int, deck: list
             print("print only numbers\n")
             continue
     
-    count = 0
-    while int(player_input) > count:
-        print(player_in[1:])
-        player_choice = input("Please choose the card:\n")
-        
-        if player_choice in player_in:
-            table.append(player_choice)
-            player_in.remove(player_choice)
-            count += 1
-            continue
-        else:
-            print("Please choice the cards you have\n")
-            continue
-        
-    player_outloud = player_say(player_input, deck)
+    player_outloud = player_choice_outloud(player_input, player_in, table, deck)
+
     
     return player_hands, table, player_outloud
 

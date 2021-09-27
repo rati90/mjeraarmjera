@@ -1,14 +1,13 @@
-def hands_table_clear(player_hands_table_say: tuple):
+def hands_table_clear(table, said_cards):
     """
     for some decisions clears table and say lists
     :param tuple player_hands_table_say not cleared table and say
 
     :return tuple player_hands_table_say cleared  table and say
     """
-    player_hands_table_say[1].clear()
-    player_hands_table_say[2].clear()
-
-    return player_hands_table_say
+    table.clear()
+    said_cards.clear()
+    return table, said_cards
 
 
 def do_you_trust(player_hands_table_say: tuple, player: int):
@@ -28,18 +27,19 @@ def do_you_trust(player_hands_table_say: tuple, player: int):
     while True:
         choice = input( f"Player N {player + 2} Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards:")
         if choice == "Yes":
+            print(table, said_cards)
             if sorted(table) == sorted(said_cards):
-                hands_table_clear(player_hands_table_say)
+                hands_table_clear(table, said_cards)
                 break
             else:
                 if len(all_players_cards) > next_player:
                     all_players_cards[next_player].extend(table)
-                    hands_table_clear(player_hands_table_say)
+                    hands_table_clear(table, said_cards)
                     break
 
                 elif len(all_players_cards) == next_player:
                     all_players_cards[0].extend(table)
-                    hands_table_clear(player_hands_table_say)
+                    hands_table_clear(table, said_cards)
                     break
 
         elif choice == "No":
@@ -47,17 +47,17 @@ def do_you_trust(player_hands_table_say: tuple, player: int):
 
                 if len(all_players_cards) > next_player:
                     all_players_cards[next_player].extend(table)
-                    hands_table_clear(player_hands_table_say)
+                    hands_table_clear(table, said_cards)
                     break
 
                 elif len(all_players_cards) == next_player:
                     all_players_cards[0].extend(table)
-                    hands_table_clear(player_hands_table_say)
+                    hands_table_clear(table, said_cards)
                     break
 
             else:
                 all_players_cards[player].extend(table)
-                hands_table_clear(player_hands_table_say)
+                hands_table_clear(table, said_cards)
                 break
             
         elif choice == "Add":
@@ -68,6 +68,7 @@ def do_you_trust(player_hands_table_say: tuple, player: int):
             print("Please write right answer, Yes,  No, or add\n")
             continue
     
-        print("I was here 2")
+        print("print here2")
+        
         return player_hands_table_say
 
