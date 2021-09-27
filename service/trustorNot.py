@@ -28,7 +28,7 @@ def do_you_trust(player_hands_table_say: tuple, player: int):
         choice = input( f"Player N {player + 2} Do you trust? choice \"Yes\" or \"No\" or \"Add\" to add more cards:")
         if choice == "Yes":
             print(table, said_cards)
-            if sorted(table) == sorted(said_cards):
+            if sorted(table[len(said_cards)-1:]) == sorted(said_cards):
                 hands_table_clear(table, said_cards)
                 break
             else:
@@ -43,7 +43,7 @@ def do_you_trust(player_hands_table_say: tuple, player: int):
                     break
 
         elif choice == "No":
-            if sorted(table) == sorted(said_cards):
+            if sorted(table[len(said_cards)-1:]) == sorted(said_cards):
 
                 if len(all_players_cards) > next_player:
                     all_players_cards[next_player].extend(table)
